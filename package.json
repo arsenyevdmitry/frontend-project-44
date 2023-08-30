@@ -1,4 +1,7 @@
 {
+  "bin": {
+  "brain-games": "bin/brain-games.js"
+}
   "name": "your-project-name",
   "version": "1.0.0",
   "type": "module",  // Вот эта строка добавлена
