@@ -41,12 +41,51 @@ export function greetUser() {
 }
 
 export function playGame() {
-  const guessNumber = readlineSync.question(
-    "Welcome to Even Game!\n Enter number: \t"
-  )
+  console.log("Welcome to the Even Games!")
+  const name = readlineSync.question("May I have your name? ")
+  console.log(`Hello, ${name}!`)
 
-  const isEven = guessNumber % 2 === 0
+  // game loop
+  let correctAnswers = 0
+  while (correctAnswers < 3) {
+    const randomNumber = Math.floor(Math.random() * 100)
 
-  if (isEven) console.log(`Your number ${guessNumber} is even`)
-  else console.log(`Loser! Your number ${guessNumber} not even`)
+    console.log(
+      `I challenge you with this number, guess is it Even? \n Number: ${randomNumber}`
+    )
+
+    const userInput = readlineSync.question("Enter answer Yes/No: ")
+    let userAnswer = "none"
+
+    if (userInput.toLowerCase() === "yes") {
+      userAnswer = "even"
+    }
+    if (userInput.toLowerCase() === "no") {
+      userAnswer = "odd"
+    }
+
+    const isEven = randomNumber % 2 === 0
+    console.log(userAnswer)
+    if (userAnswer === "none") {
+      console.log("You are bustard and looser. Play again")
+      break
+    }
+
+    if (isEven && userAnswer === "even") {
+      console.log(
+        `My number ${randomNumber} is even, you answered ${userAnswer} and it's correct`
+      )
+      correctAnswers++
+    }
+
+    if (!isEven && userAnswer === "odd") {
+      console.log(
+        `My number ${randomNumber} is odd, you answered ${userAnswer} and it's correct`
+      )
+      correctAnswers++
+    } else {
+      console.log("You are bustard and looser. Play again")
+      break
+    }
+  }
 }
