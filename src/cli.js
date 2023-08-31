@@ -40,35 +40,13 @@ export function greetUser() {
   console.log(`Hello, ${name}!`)
 }
 
-export function playGame(
-  gameName,
-  gameDescription,
-  generateQuestion,
-  getCorrectAnswer
-) {
-  console.log(`${gameName}\n`)
-  const name = readlineSync.question(
-    "Welcome to the Brain Games!\nMay I have your name? "
+export function playGame() {
+  const guessNumber = readlineSync.question(
+    "Welcome to Even Game!\n Enter number: \t"
   )
-  console.log(`Hello, ${name}!\n${gameDescription}`)
 
-  let correctAnswers = 0
-  while (correctAnswers < 3) {
-    const [question, correctAnswer] = generateQuestion()
-    console.log(`Question: ${question}`)
-    const userAnswer = readlineSync.question("Your answer: ")
+  const isEven = guessNumber % 2 === 0
 
-    if (userAnswer === correctAnswer) {
-      console.log("Correct!")
-      correctAnswers += 1
-    } else {
-      console.log(
-        `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`
-      )
-      console.log(`Let's try again, ${name}!`)
-      return
-    }
-  }
-
-  console.log(`Congratulations, ${name}!`)
+  if (isEven) console.log(`Your number ${guessNumber} is even`)
+  else console.log(`Loser! Your number ${guessNumber} not even`)
 }
