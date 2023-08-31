@@ -1,4 +1,4 @@
-import runGame from "../src/cli.js"
+import { runGame } from "../src/cli.js"
 
 // Генерация случайного числа в диапазоне
 const getRandomNumber = (min, max) =>
