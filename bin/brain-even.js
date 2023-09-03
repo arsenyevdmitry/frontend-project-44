@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import { playGame } from "../src/cli.js"
+import { startGameEven } from "../src/cli.js"
 
-playGame()
+startGameEven()
