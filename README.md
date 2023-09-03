@@ -9,4 +9,5 @@ npm run brain-calc
 npm run brain-games
 npm run brain-even
 npm run brain-gcd
+npm run brain-progression
 ```

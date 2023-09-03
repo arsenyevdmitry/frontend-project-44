@@ -136,3 +136,95 @@ export function startGame() {
 
   console.log(`Congratulations, ${playerName}!`)
 }
+
+// Функция для создания арифметической прогрессии
+function generateProgression() {
+  const progressionLength = Math.floor(Math.random() * 6) + 5 // Случайная длина прогрессии от 5 до 10 чисел
+  const firstNumber = Math.floor(Math.random() * 50) + 1 // Случайное начальное число от 1 до 50
+  const commonDifference = Math.floor(Math.random() * 10) + 1 // Случайная разница между числами от 1 до 10
+
+  const progression = []
+  for (let i = 0; i < progressionLength; i++) {
+    progression.push(firstNumber + i * commonDifference)
+  }
+
+  // Выбираем случайную позицию для замены числа двумя точками
+  const hiddenNumberIndex = Math.floor(Math.random() * progressionLength)
+  progression[hiddenNumberIndex] = ".."
+
+  return {
+    progression: progression.join(" "),
+    hiddenNumber: firstNumber + hiddenNumberIndex * commonDifference,
+  }
+}
+
+// Функция для запуска игры
+export function startGamer() {
+  console.log("Welcome to the Brain Games!")
+  const playerName = readlineSync.question("May I have your name? ")
+  console.log(`Hello, ${playerName}!`)
+  console.log("What number is missing in the progression?")
+
+  const rounds = 3
+
+  for (let i = 0; i < rounds; i++) {
+    const { progression, hiddenNumber } = generateProgression()
+    console.log(`Question: ${progression}`)
+    const userAnswer = parseInt(readlineSync.question("Your answer: "), 10)
+
+    if (userAnswer === hiddenNumber) {
+      console.log("Correct!")
+    } else {
+      console.log(
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${hiddenNumber}'.`
+      )
+      console.log(`Let's try again, ${playerName}!`)
+      return
+    }
+  }
+
+  console.log(`Congratulations, ${playerName}!`)
+}
+
+// Функция для определения, является ли число простым
+function isPrime(num) {
+  if (num <= 1) {
+    return false
+  }
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      return false
+    }
+  }
+  return true
+}
+
+// Функция для запуска игры
+export function startGamePrime() {
+  console.log("Welcome to the Brain Games!")
+  const playerName = readlineSync.question("May I have your name? ")
+  console.log(`Hello, ${playerName}!`)
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".')
+
+  const rounds = 3
+
+  for (let i = 0; i < rounds; i++) {
+    const randomNumber = Math.floor(Math.random() * 100) + 1 // Генерируем случайное число от 1 до 100
+    console.log(`Question: ${randomNumber}`)
+    const userAnswer = readlineSync.question("Your answer: ")
+
+    const correctAnswer = isPrime(randomNumber) ? "yes" : "no"
+
+    if (userAnswer === correctAnswer) {
+      console.log("Correct!")
+    } else {
+      console.log(
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`
+      )
+      console.log(`Let's try again, ${playerName}!`)
+      return
+    }
+  }
+
+  console.log(`Congratulations, ${playerName}!`)
+}
