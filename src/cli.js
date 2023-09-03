@@ -89,3 +89,50 @@ export function playGame() {
     }
   }
 }
+
+// Функция для нахождения НОД двух чисел
+function findGCD(a, b) {
+  while (b !== 0) {
+    let temp = b
+    b = a % b
+    a = temp
+  }
+  return a
+}
+
+// Функция для генерации случайного числа в диапазоне
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+// Функция для запуска игры
+export function startGame() {
+  console.log("Welcome to the Brain Games!")
+  const playerName = readlineSync.question("May I have your name? ")
+  console.log(`Hello, ${playerName}!`)
+  console.log("Find the greatest common divisor of given numbers.")
+
+  // Количество вопросов
+  const rounds = 3
+
+  for (let i = 0; i < rounds; i++) {
+    const num1 = getRandomNumber(1, 100)
+    const num2 = getRandomNumber(1, 100)
+    const correctAnswer = findGCD(num1, num2)
+
+    console.log(`Question: ${num1} ${num2}`)
+    const userAnswer = readlineSync.question("Your answer: ")
+
+    if (parseInt(userAnswer, 10) === correctAnswer) {
+      console.log("Correct!")
+    } else {
+      console.log(
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`
+      )
+      console.log(`Let's try again, ${playerName}!`)
+      return
+    }
+  }
+
+  console.log(`Congratulations, ${playerName}!`)
+}
