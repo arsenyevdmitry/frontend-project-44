@@ -1,5 +1,5 @@
 {
-  "name": "your-project-name",
+  "name": "@hexlet/code",
   "main": "index.js",
   "version": "1.0.0",
   "bin": {
