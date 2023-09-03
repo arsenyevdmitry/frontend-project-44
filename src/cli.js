@@ -178,15 +178,7 @@ export function startGamer() {
 
 // Функция для определения, является ли число простым
 function isPrime(num) {
-  if (num <= 1) {
-    return false
-  }
-  for (let i = 2; i <= Math.sqrt(num); i++) {
-    if (num % i === 0) {
-      return false
-    }
-  }
-  return true
+  return num % 2 === 0
 }
 
 // Функция для запуска игры
