@@ -1,12 +1,9 @@
+/* eslint-disable no-param-reassign */
+
 import readlineSync from "readline-sync"
 
 // Общая логика игр
-export function runGame(
-  gameName,
-  gameDescription,
-  generateQuestion,
-  getCorrectAnswer
-) {
+export function runGame(gameName, gameDescription, generateQuestion) {
   console.log(`${gameName}\n`)
   const name = readlineSync.question(
     "Welcome to the Brain Games!\nMay I have your name? "
@@ -83,7 +80,7 @@ export function startGameEven() {
 // Функция для нахождения НОД двух чисел
 function findGCD(a, b) {
   while (b !== 0) {
-    let temp = b
+    const temp = b
     b = a % b
     a = temp
   }
@@ -105,7 +102,7 @@ export function startGame() {
   // Количество вопросов
   const rounds = 3
 
-  for (let i = 0; i < rounds; i++) {
+  for (let i = 0; i < rounds; i += 1) {
     const num1 = getRandomNumber(1, 100)
     const num2 = getRandomNumber(1, 100)
     const correctAnswer = findGCD(num1, num2)
@@ -129,9 +126,12 @@ export function startGame() {
 
 // Функция для создания арифметической прогрессии
 function generateProgression() {
-  const progressionLength = Math.floor(Math.random() * 6) + 5 // Случайная длина прогрессии от 5 до 10 чисел
-  const firstNumber = Math.floor(Math.random() * 50) + 1 // Случайное начальное число от 1 до 50
-  const commonDifference = Math.floor(Math.random() * 10) + 1 // Случайная разница между числами от 1 до 10
+  // Случайная длина прогрессии от 5 до 10 чисел
+  const progressionLength = Math.floor(Math.random() * 6) + 5
+  // Случайное начальное число от 1 до 50
+  const firstNumber = Math.floor(Math.random() * 50) + 1
+  // Случайная разница между числами от 1 до 10
+  const commonDifference = Math.floor(Math.random() * 10) + 1
 
   const progression = []
   for (let i = 0; i < progressionLength; i++) {
@@ -157,7 +157,7 @@ export function startGamer() {
 
   const rounds = 3
 
-  for (let i = 0; i < rounds; i++) {
+  for (let i = 0; i < rounds; i += 1) {
     const { progression, hiddenNumber } = generateProgression()
     console.log(`Question: ${progression}`)
     const userAnswer = parseInt(readlineSync.question("Your answer: "), 10)
