@@ -197,6 +197,7 @@ export function startGamePrime() {
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".')
 
   const rounds = 3
+
   let correctAnswers = 0
 
   for (let i = 0; i < rounds; i++) {
@@ -220,6 +221,8 @@ export function startGamePrime() {
   if (correctAnswers === rounds) {
     console.log(`Congratulations, ${playerName}!`)
   } else {
-    console.log(`Let's try again, ${playerName}!`)
+    console.log(
+      `You answered correctly to ${correctAnswers} questions out of ${rounds}. Let's try again, ${playerName}!`
+    )
   }
 }
