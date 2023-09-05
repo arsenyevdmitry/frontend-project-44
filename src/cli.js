@@ -197,24 +197,29 @@ export function startGamePrime() {
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".')
 
   const rounds = 3
+  let correctAnswers = 0
 
   for (let i = 0; i < rounds; i++) {
     const randomNumber = Math.floor(Math.random() * 100) + 1 // Генерируем случайное число от 1 до 100
     console.log(`Question: ${randomNumber}`)
     const userAnswer = readlineSync.question("Your answer: ")
 
-    const correctAnswer = isPrime(randomNumber) ? "yes" : "no"
+    const isPrimeNumber = isPrime(randomNumber)
+    const correctAnswer = isPrimeNumber ? "yes" : "no"
 
     if (userAnswer === correctAnswer) {
       console.log("Correct!")
+      correctAnswers++
     } else {
       console.log(
         `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`
       )
-      console.log(`Let's try again, ${playerName}!`)
-      return
     }
   }
 
-  console.log(`Congratulations, ${playerName}!`)
+  if (correctAnswers === rounds) {
+    console.log(`Congratulations, ${playerName}!`)
+  } else {
+    console.log(`Let's try again, ${playerName}!`)
+  }
 }
