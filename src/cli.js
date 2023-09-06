@@ -141,7 +141,7 @@ export function startGamePrime() {
     console.log(`Question: ${randomNumber}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
-    const correctAnswer = isPrimeNumber(randomNumber) ? 'yes' : 'no';
+    const correctAnswer = isPrimeNumber(randomNumber) ? 'no' : 'yes';
 
     if (userAnswer === correctAnswer) {
       console.log(`${userAnswer} \n Correct!`);
