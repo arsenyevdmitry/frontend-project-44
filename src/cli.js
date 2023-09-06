@@ -35,11 +35,10 @@ export function runCalcGame() {
 
   const gameDescription = 'this is calc game';
 
-  // const name = readlineSync.question(
-  //   'Welcome to the Brain Games!\nMay I have your name? ',
-  // );
+  const name = readlineSync.question(
+    'Welcome to the Brain Games!\nMay I have your name? ',
+  );
 
-  const name = 'sdf';
   console.log(`Hello, ${name}!\n ${gameDescription}`);
 
   let correctAnswers = 0;
