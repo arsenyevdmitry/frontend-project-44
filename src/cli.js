@@ -144,7 +144,7 @@ export function startGamePrime() {
     const correctAnswer = isPrimeNumber ? 'yes' : 'no';
 
     if (userAnswer === correctAnswer) {
-      console.log('Correct!');
+      console.log(`${userAnswer} \n Correct!`);
       correctAnswers++;
     } else {
       console.log(
