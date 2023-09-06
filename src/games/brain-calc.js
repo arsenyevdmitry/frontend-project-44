@@ -2,5 +2,4 @@
 
 import { runCalcGame } from '../cli.js';
 
-// Запуск игры
 runCalcGame();

@@ -10,20 +10,37 @@ export function runCalcGame() {
     const num1 = getRandomNumber(1, 100);
     const num2 = getRandomNumber(1, 100);
     const operation = getRandomOperation();
+    let correctAnswer;
+
+    switch (operation) {
+      case '+':
+        correctAnswer = (num1 + num2).toString();
+        break;
+      case '-':
+        correctAnswer = (num1 - num2).toString();
+        break;
+      case '*':
+        correctAnswer = (num1 * num2).toString();
+        break;
+      case '/':
+        correctAnswer = (num1 / num2).toString();
+        break;
+      default:
+        throw new Error(`Invalid operation: ${operation}`);
+    }
 
     const question = `${num1} ${operation} ${num2}`;
-    // eslint-disable-next-line no-eval
-    const correctAnswer = eval(question).toString(); // Вычисление правильного ответа
-
     return [question, correctAnswer];
   };
 
   const gameDescription = 'this is calc game';
 
-  const name = readlineSync.question(
-    'Welcome to the Brain Games!\nMay I have your name? ',
-  );
-  console.log(`Hello, ${name}!\n${gameDescription}`);
+  // const name = readlineSync.question(
+  //   'Welcome to the Brain Games!\nMay I have your name? ',
+  // );
+
+  const name = 'sdf';
+  console.log(`Hello, ${name}!\n ${gameDescription}`);
 
   let correctAnswers = 0;
   while (correctAnswers < 3) {
