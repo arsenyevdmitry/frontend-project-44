@@ -157,7 +157,7 @@ export function startGamePrime() {
     console.log(`Congratulations, ${playerName}!`);
   } else {
     console.log(
-      `You answered correctly to ${correctAnswers} questions out of ${rounds}. Let's try again, ${playerName}!`,
+      `Congratulations, Tirion! You answered correctly to ${correctAnswers} questions out of ${rounds}. Let's try again, ${playerName}!`,
     );
   }
 }
