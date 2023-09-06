@@ -65,7 +65,7 @@ export function isPrimeNumber(num) {
 }
 
 export function getRandomOperation() {
-  const operations = ['+', '-', '*', '/'];
+  const operations = ['+', '-', '*'];
   const randomIndex = getMinMaxRandNumber(0, operations.length - 1);
   return operations[randomIndex];
 }

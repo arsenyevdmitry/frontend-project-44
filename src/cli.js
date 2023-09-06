@@ -33,18 +33,16 @@ export function runCalcGame() {
     return [question, correctAnswer];
   };
 
-  const gameDescription = 'this is calc game';
-
   const name = readlineSync.question(
     'Welcome to the Brain Games!\nMay I have your name? ',
   );
 
-  console.log(`Hello, ${name}!\n ${gameDescription}`);
+  console.log(`Hello, ${name}!\n`);
 
   let correctAnswers = 0;
   while (correctAnswers < 3) {
     const [question, correctAnswer] = generateQuestion();
-    console.log(`Question: ${question}`);
+    console.log(`What is the result of the expression? \n Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
     if (userAnswer === correctAnswer) {
