@@ -136,10 +136,18 @@ export function startGamePrime() {
   let correctAnswers = 0;
 
   for (let i = 0; i < rounds; i++) {
-    // Генерируем случайное число от 1 до 100
+    // Generate a random number from 2 to 50
     const randomNumber = getMinMaxRandNumber(2, 50);
     console.log(`Question: ${randomNumber}`);
-    const userAnswer = readlineSync.question('Your answer: ');
+
+    let userAnswer;
+    while (true) {
+      userAnswer = readlineSync.question('Your answer: ');
+      if (userAnswer === 'yes' || userAnswer === 'no') {
+        break; // Exit the loop if the user provides a valid answer.
+      }
+      console.log('Please enter "yes" or "no" as your answer.');
+    }
 
     const correctAnswer = isPrimeNumber(randomNumber) ? 'no' : 'yes';
 
