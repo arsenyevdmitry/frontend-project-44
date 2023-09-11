@@ -149,7 +149,7 @@ export function startGamePrime() {
       console.log('Please enter "yes" or "no" as your answer.');
     }
 
-    const correctAnswer = isPrimeNumber(randomNumber) ? 'no' : 'yes';
+    const correctAnswer = isPrimeNumber(randomNumber) ? 'yes' : 'no';
 
     if (userAnswer === correctAnswer) {
       console.log(`${userAnswer} \n Correct!`);
