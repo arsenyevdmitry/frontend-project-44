@@ -171,35 +171,71 @@ export function startGamePrime() {
 }
 
 export function startEvenGame() {
+  import readlineSync from 'readline-sync';
+
+  // Function to generate a random number between min and max (inclusive).
+  function getMinMaxRandNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  // Function to check if a number is prime.
+  function isPrimeNumber(num) {
+    if (num <= 1) {
+      return false;
+    }
+    if (num <= 3) {
+      return true;
+    }
+    if (num % 2 === 0 || num % 3 === 0) {
+      return false;
+    }
+    let i = 5;
+    while (i * i <= num) {
+      if (num % i === 0 || num % (i + 2) === 0) {
+        return false;
+      }
+      i += 6;
+    }
+    return true;
+  }
+
   console.log('Welcome to the Brain Games!');
   const playerName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${playerName}!`);
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 
   const rounds = 3;
+
   let correctAnswers = 0;
 
   for (let i = 0; i < rounds; i++) {
-    const randomNumber = getRandomNumber();
+    // Generate a random number from 2 to 50
+    const randomNumber = getMinMaxRandNumber(2, 50);
     console.log(`Question: ${randomNumber}`);
-    const userAnswer = readlineSync.question('Your answer: ');
 
-    const isEven = randomNumber % 2 === 0;
-    const correctAnswer = isEven ? 'yes' : 'no';
+    let userAnswer;
+    while (true) {
+      userAnswer = readlineSync.question('Your answer: ');
+      if (userAnswer === 'yes' || userAnswer === 'no') {
+        break; // Exit the loop if the user provides a valid answer.
+      }
+      console.log('Please enter "yes" or "no" as your answer.');
+    }
+
+    const correctAnswer = isPrimeNumber(randomNumber) ? 'yes' : 'no';
 
     if (userAnswer === correctAnswer) {
       console.log('Correct!');
       correctAnswers++;
     } else {
-      console.log(
-        `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`,
-      );
-      console.log(`Let's try again, ${playerName}!`);
-      return;
+      console.log(`'${userAnswer}' is the wrong answer ;(. Correct answer was '${correctAnswer}'.`);
     }
   }
 
   if (correctAnswers === rounds) {
     console.log(`Congratulations, ${playerName}!`);
+  } else {
+    console.log(`Congratulations, ${playerName}! You answered correctly to ${correctAnswers} questions out of ${rounds}. Let's try again, ${playerName}!`);
   }
+
 }
