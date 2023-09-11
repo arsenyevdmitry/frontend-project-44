@@ -7,7 +7,7 @@ export function getMinMaxRandNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 // Function to generate a random even number between min and max (inclusive).
-function getRandomEvenNumber(min, max) {
+export function getRandomEvenNumber(min, max) {
   const range = max - min + 1;
   const randomOffset = Math.floor(Math.random() * range);
   return min + 2 * randomOffset; // Ensures an even number within the specified range.
