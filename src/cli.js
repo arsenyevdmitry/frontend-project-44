@@ -171,7 +171,6 @@ export function startGamePrime() {
 }
 
 export function startEvenGame() {
-  import readlineSync from 'readline-sync';
 
   // Function to generate a random number between min and max (inclusive).
   function getMinMaxRandNumber(min, max) {
